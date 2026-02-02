@@ -1,11 +1,13 @@
 def is_surviving(monsters_count, bullet_count, healths, positions):
     monsters = sorted((abs(positions[i]), healths[i]) for i in range(monsters_count))
-    total_health = 0
+    lost_points=0
     for distance, health in monsters:
-        total_health += health
-        if total_health > bullet_count * distance:
-            return print("NO")
-    return print("YES")
+        lost_points+=health
+        if (bullet_count * distance) < lost_points : 
+            print("NO")
+            return
+
+    print("YES")
 
 
 if __name__ == "__main__":
